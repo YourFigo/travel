@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
+/**
+ * 注册
+ */
 @WebServlet("/regeistUserServlet")
 public class RegeistUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
