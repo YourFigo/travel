@@ -20,13 +20,14 @@ import java.util.Map;
 @WebServlet("/regeistUserServlet")
 public class RegeistUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*        //验证校验
+        //验证校验
         String check = request.getParameter("check");
         //从sesion中获取验证码
         HttpSession session = request.getSession();
+        // 服务端生成的验证码
         String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
         session.removeAttribute("CHECKCODE_SERVER");//为了保证验证码只能使用一次
-        //比较
+        //比较 不区分大小写
         if(checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)){
             //验证码错误
             ResultInfo info = new ResultInfo();
@@ -39,7 +40,7 @@ public class RegeistUserServlet extends HttpServlet {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(json);
             return;
-        }*/
+        }
 
         //1.获取数据
         Map<String, String[]> map = request.getParameterMap();
