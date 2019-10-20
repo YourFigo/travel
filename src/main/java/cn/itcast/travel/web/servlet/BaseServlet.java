@@ -1,9 +1,14 @@
 package cn.itcast.travel.web.servlet;
 
+import cn.itcast.travel.domain.ResultInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -47,6 +52,57 @@ public class BaseServlet extends HttpServlet {
 
     }
 
+    /**
+     * 直接将传入的对象序列化为json，并且写回客户端
+     * @param obj
+     */
+    public void writeValue(Object obj,HttpServletResponse response) throws IOException {
+        //将info对象序列化为json，使用jackson
+        ObjectMapper mapper = new ObjectMapper();
+        //将json数据写回客户端
+        //设置content-type
+        response.setContentType("application/json;charset=utf-8");
+        mapper.writeValue(response.getOutputStream(),obj);
+    }
 
+    /**
+     * 将传入的对象序列化为json，返回
+     * @param obj
+     * @return
+     */
+    public String writeValueAsString(Object obj) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(obj);
+    }
+
+    /**
+     * 校验验证码
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public ResultInfo checkCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //验证校验
+        String check = request.getParameter("check");
+        //从sesion中获取验证码
+        HttpSession session = request.getSession();
+        // 服务端生成的验证码
+        String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
+        session.removeAttribute("CHECKCODE_SERVER");//为了保证验证码只能使用一次
+        ResultInfo info = new ResultInfo();
+        //比较 不区分大小写
+        if(checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)){
+            //验证码错误
+            //注册失败
+            info.setFlag(false);
+            info.setErrorMsg("验证码错误");
+
+            //将数据写回客户端
+            writeValue(info,response);
+        }else {
+            info.setFlag(true);
+        }
+        return info;
+    }
 
 }

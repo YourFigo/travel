@@ -6,7 +6,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
- * 发邮件工具类
+ * 发邮件工具类,请填写正确的QQ邮箱，以便正常发送验证邮件
  */
 public final class MailUtils {
     private static final String USER = ""; // 发件人称号，同邮箱地址

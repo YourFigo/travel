@@ -21,27 +21,83 @@
 
 	<script>
 
+		//校验用户名
+		//单词字符，长度8到20位
+		function checkUsername() {
+			//1.获取用户名值
+			var username = $("#username").val();
+			//2.定义正则
+			var reg_username = /^\w{5,20}$/;
+
+			//3.判断，给出提示信息
+			var flag = reg_username.test(username);
+			if(flag){
+				//用户名合法
+				$("#username").css("border","");
+			}else{
+				//用户名非法,加一个红色边框
+				$("#username").css("border","1px solid red");
+			}
+			return flag;
+		}
+
+		//校验密码
+		function checkPassword() {
+			//1.获取密码值
+			var password = $("#password").val();
+			//2.定义正则
+			var reg_password = /^\w{8,20}$/;
+
+			//3.判断，给出提示信息
+			var flag = reg_password.test(password);
+			if(flag){
+				//密码合法
+				$("#password").css("border","");
+			}else{
+				//密码非法,加一个红色边框
+				$("#password").css("border","1px solid red");
+			}
+			return flag;
+		}
+
+		//校验验证码
+		function checkCheck() {
+			//1.获取验证码
+			var check = $("#check").val();
+			// 如果为空，则为 false
+			var flag = !(typeof check == "undefined" || check == null || check == "");
+			if(flag){
+				//验证码不为空
+				$("#check").css("border","");
+			}else{
+				//密码非法,加一个红色边框
+				$("#check").css("border","1px solid red");
+			}
+			return flag;
+		}
+
 		$(function () {
             //1.给登录按钮绑定单击事件
 			$("#btn_sub").click(function () {
-                //2.发送ajax请求，提交表单数据
-				$.post("user/login",$("#loginForm").serialize(),function (data) {
-					//data : {flag:false,errorMsg:''}
-					if(data.flag){
-					    //登录成功
-						location.href="index.html";
-					}else{
-					    //登录失败
-						$("#errorMsg").html(data.errorMsg);
-					}
-                });
+				if (checkUsername() && checkPassword() && checkCheck()){
+					//2.发送ajax请求，提交表单数据
+					$.post("user/login",$("#loginForm").serialize(),function (data) {
+						//data : {flag:false,errorMsg:''}
+						if(data.flag){
+							//登录成功
+							location.href="index.html";
+						}else{
+							//登录失败
+							$("#errorMsg").html(data.errorMsg);
+						}
+					});
+				}
+				return false;
             });
-        });
-
-
-		//3.处理响应结果
-
-
+			$("#username").blur(checkUsername);
+			$("#password").blur(checkPassword);
+			$("#check").blur(checkCheck);
+		});
 
 	</script>
 </head>
@@ -65,10 +121,10 @@
         		<div id="errorMsg" class="alert alert-danger" ></div>
 				<form id="loginForm" action="" method="post" accept-charset="utf-8">
         			<input type="hidden" name="action" value="login"/>
-					<input name="username" type="text" placeholder="请输入账号" autocomplete="off">
-        			<input name="password" type="text" placeholder="请输入密码" autocomplete="off">
+					<input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="off">
+        			<input id="password" name="password" type="text" placeholder="请输入密码" autocomplete="off">
         			<div class="verify">
-					<input name="check" type="text" placeholder="请输入验证码" autocomplete="off">
+					<input id="check" name="check" type="text" placeholder="请输入验证码" autocomplete="off">
 					<span><img src="checkCode" alt="" onclick="changeCheckCode(this)"></span>
 					<script type="text/javascript">
 						//图片点击事件
@@ -85,7 +141,7 @@
         				</div>        				
         			</div>        			       		
         		</form>
-        		<div class="reg">没有账户？<a href="javascript:;">立即注册</a></div>
+        		<div class="reg">没有账户？<a href="register.html">立即注册</a></div>
         	</div>
         </div>
     </section>
