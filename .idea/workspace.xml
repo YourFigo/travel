@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7f5acdd7-b3ab-48bd-886f-85e9038b8059" name="Default Changelist" comment="注册功能第一次提交">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/itcast/travel/service/impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/itcast/travel/service/impl/CategoryServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2019-10-21" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2019-10-21" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +150,7 @@
       <workItem from="1571246474922" duration="74000" />
       <workItem from="1571314515985" duration="10435000" />
       <workItem from="1571540365350" duration="25212000" />
-      <workItem from="1571660088153" duration="4241000" />
+      <workItem from="1571660088153" duration="5048000" />
     </task>
     <task id="LOCAL-00001" summary="注册功能第一次提交">
       <created>1571328979268</created>
