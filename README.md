@@ -1,8 +1,8 @@
 # `travel`
 * **黑马旅游网的例子**  
-- __本人已成功完成，并成功运行__
-
-### `踩坑记录`
+- __本人已成功完成，并成功运行__ :smile:
+---
+### `踩坑记录` :sob:
 1. _从中央仓库下载指定的包_  
    mvn dependency:get -DremoteRepositories=url -DgroupId=groupId -DartifactId=artifactId -Dversion=version
 
@@ -13,7 +13,7 @@
     url=jdbc:mysql:///travel?useUnicode=true&characterEncoding=utf-8
 
 4. _运行前先打开redis的server_
-
+---
 ### `目录树`
 ```
 ├─.idea  
