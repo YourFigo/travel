@@ -19,6 +19,7 @@ import java.lang.reflect.Method;
 public class BaseServlet extends HttpServlet {
 
     /**
+     * 这个方法可以将请求的路径和方法名对应起来
      * 完成请求方法的分发，有了这个，具体功能的servlet就可以删掉了，比如 ActiveUserServlet、ExitServlet等，
      * 只保留UserServlet等
      * @param req

@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * 用户相关的servlet，继承自BaseServlet
+ * BaseServlet中的service方法可以将请求路径和具体方法名对应起来
  */
 @WebServlet("/user/*")
 public class UserServlet extends BaseServlet {
