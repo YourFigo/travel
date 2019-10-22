@@ -29,8 +29,9 @@ public class CategoryServiceImpl implements CategoryService {
         //1.1获取jedis客户端
         Jedis jedis = JedisUtil.getJedis();
         //1.2可使用sortedset排序查询
-        Set<String> categorys = jedis.zrange("category", 0, -1);
-
+        //Set<String> categorys = jedis.zrange("category", 0, -1);
+        //这样可以获取到分数(cid)，上面 zrange 只能获取到 cname
+        Set<Tuple> categorys = jedis.zrangeWithScores("category", 0, -1);
         List<Category> cs = null;
         //2.判断查询的集合是否为空
         if (categorys == null || categorys.size() == 0) {
@@ -47,9 +48,10 @@ public class CategoryServiceImpl implements CategoryService {
             System.out.println("分类信息 从redis中查询.....");
             //4.如果不为空,将从redis取出的set<String>数据存入list<Category>
             cs = new ArrayList<Category>();
-            for (String name : categorys) {
+            for (Tuple tuple : categorys) {
                 Category category = new Category();
-                category.setCname(name);
+                category.setCname(tuple.getElement());
+                category.setCid((int)tuple.getScore());
                 cs.add(category);
             }
         }
