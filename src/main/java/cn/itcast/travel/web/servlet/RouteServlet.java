@@ -27,14 +27,17 @@ public class RouteServlet extends BaseServlet {
      * @throws IOException
      */
     public void pageQuery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //1.接受参数
+        // 1.接受参数
         String currentPageStr = request.getParameter("currentPage");
         String pageSizeStr = request.getParameter("pageSize");
         String cidStr = request.getParameter("cid");
-
+        String rname = request.getParameter("rname");
+        // 解决汉字乱码问题
+        rname = new String(rname.getBytes("iso-8859-1"),"utf-8");
 
         int cid = 0;//类别id
-        //2.处理参数
+        // 2.处理参数
+        // 如果前台没有传来 cid 或者 传来的为 null ，那么cid还为0，cid=0，dao中的sql就不会启用cid条件
         if(cidStr != null && cidStr.length() > 0 && !"null".equals(cidStr)){
             cid = Integer.parseInt(cidStr);
         }
@@ -53,7 +56,7 @@ public class RouteServlet extends BaseServlet {
         }
 
         //3. 调用service查询PageBean对象
-        PageBean<Route> pb = routeService.pageQuery(cid, currentPage, pageSize);
+        PageBean<Route> pb = routeService.pageQuery(cid, currentPage, pageSize, rname);
 
         //4. 将pageBean对象序列化为json，返回
         writeValue(pb,response);
