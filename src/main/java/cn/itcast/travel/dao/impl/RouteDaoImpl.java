@@ -16,7 +16,10 @@ public class RouteDaoImpl implements RouteDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
 
     /**
-     * 根据cid查询总记录数
+     * 根据cid和rname查询总记录数
+     * @param cid
+     * @param rname
+     * @return
      */
     @Override
     public int findTotalCount(int cid, String rname) {
@@ -40,7 +43,12 @@ public class RouteDaoImpl implements RouteDao {
     }
 
     /**
-     * 根据cid，start,pageSize查询当前页的数据集合
+     * 根据cid，start,pageSize,rname查询当前页的数据集合
+     * @param cid
+     * @param start
+     * @param pageSize
+     * @param rname
+     * @return
      */
     @Override
     public List<Route> findByPage(int cid, int start, int pageSize, String rname) {
@@ -64,6 +72,17 @@ public class RouteDaoImpl implements RouteDao {
         params.add(pageSize);
 
         return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class), params.toArray());
+    }
+
+    /**
+     * 根据id查询 route信息
+     * @param rid
+     * @return
+     */
+    @Override
+    public Route findOne(int rid) {
+        String sql = "select * from tab_route where rid = ?";
+        return template.queryForObject(sql,new BeanPropertyRowMapper<Route>(Route.class),rid);
     }
 
 }

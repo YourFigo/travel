@@ -13,8 +13,15 @@ public interface RouteService {
      * @param cid
      * @param currentPage
      * @param pageSize
+     * @param rname
      * @return
      */
     public PageBean<Route> pageQuery(int cid, int currentPage, int pageSize, String rname);
 
+    /**
+     * 点击每一个商品的 查看详情 按钮
+     * @param rid
+     * @return
+     */
+    public Route findOne(String rid);
 }
