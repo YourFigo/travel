@@ -1,10 +1,13 @@
 package cn.itcast.travel.web.servlet;
 
+import cn.itcast.travel.domain.Category;
 import cn.itcast.travel.domain.PageBean;
 import cn.itcast.travel.domain.Route;
 import cn.itcast.travel.domain.User;
+import cn.itcast.travel.service.CategoryService;
 import cn.itcast.travel.service.FavoriteService;
 import cn.itcast.travel.service.RouteService;
+import cn.itcast.travel.service.impl.CategoryServiceImpl;
 import cn.itcast.travel.service.impl.FavoriteServiceImpl;
 import cn.itcast.travel.service.impl.RouteServiceImpl;
 
@@ -22,6 +25,7 @@ public class RouteServlet extends BaseServlet {
 
     private RouteService routeService = new RouteServiceImpl();
     private FavoriteService favoriteService = new FavoriteServiceImpl();
+    private CategoryService categoryService = new CategoryServiceImpl();
 
     /**
      * 分页查询
@@ -80,6 +84,8 @@ public class RouteServlet extends BaseServlet {
         String rid = request.getParameter("rid");
         //2.调用service查询route对象
         Route route = routeService.findOne(rid);
+        Category category = categoryService.findByCid(String.valueOf(route.getCid()));
+        route.setCategory(category);
         //3.转为json写回客户端
         writeValue(route,response);
     }

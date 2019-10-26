@@ -58,4 +58,27 @@ public class CategoryServiceImpl implements CategoryService {
         return cs;
     }
 
+    /**
+     * 根据 cid 查询 分类信息
+     * @param cid
+     * @return
+     */
+    @Override
+    public Category findByCid(String cid){
+        // 查询 分类 列表
+        List<Category> cs = this.findAll();
+        // 用于存放 查询出 某个分类
+        Category category = null;
+        if (cid != null){
+            for (int i = 0; i < cs.size(); i++) {
+                Category c = cs.get(i);
+                if (Integer.parseInt(cid) == c.getCid()){
+                    category = c;
+                    break;
+                }
+            }
+        }
+        return category;
+    }
+
 }

@@ -194,9 +194,10 @@
 
             // 修改详情页 图片上方的链接
             // 分类名 需要根据 cid来取得
-            $.get("category/findByCid",{cid:route.cid},function (category) {
+            /*$.get("category/findByCid",{cid:route.cid},function (category) {
                 $("#link_category").html(category.cname);
-            });
+            });*/
+            $("#link_category").html(route.category.cname);
             $("#link_category").prop("href","route_list.html?cid=" + route.cid);
             $("#link_rname").html(route.rname);
             $("#link_rname").prop("href","route_detail.html?rid=" + route.rid);

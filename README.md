@@ -13,6 +13,11 @@
     url=jdbc:mysql:///travel?useUnicode=true&characterEncoding=utf-8
 
 4. _运行前先打开redis的server_
+
+5. _为了注册后能注册激活，注册时请输入正确邮箱，并且将cn\itcast\travel\util\MailUtils.java中的USER和PASSWORD填写为正确的qq邮箱地址和登录授权码_
+---
+### `配套讲解` :stuck_out_tongue_winking_eye:
+* 知乎文章：https://zhuanlan.zhihu.com/p/88646197
 ---
 ### `目录树`
 ```

@@ -38,26 +38,18 @@ public class CategoryServlet extends BaseServlet {
 
     /**
      * 根据 cid 查询 分类信息
+     * 其实没必要怎样写，因为Route中可以带Category信息
      * @param request
      * @param response
      * @throws IOException
      */
+    @Deprecated
     public void findByCid(HttpServletRequest request,HttpServletResponse response) throws IOException {
         // 从请求中获取 cid
         String cid = request.getParameter("cid");
-        // 查询 分类 列表
-        List<Category> cs = categoryService.findAll();
+
         // 用于存放 查询出 某个分类
-        Category category = null;
-        if (cid != null){
-            for (int i = 0; i < cs.size(); i++) {
-                Category c = cs.get(i);
-                if (Integer.parseInt(cid) == c.getCid()){
-                    category = c;
-                    break;
-                }
-            }
-        }
+        Category category = categoryService.findByCid(cid);
         writeValue(category, response);
     }
 

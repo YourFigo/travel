@@ -10,4 +10,11 @@ import java.util.List;
 public interface CategoryService {
 
     public List<Category> findAll();
+
+    /**
+     * 根据 cid 查询 分类信息
+     * @param cid
+     * @return
+     */
+    public Category findByCid(String cid);
 }
