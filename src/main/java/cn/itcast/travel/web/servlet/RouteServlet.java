@@ -98,8 +98,8 @@ public class RouteServlet extends BaseServlet {
         User user = (User) request.getSession().getAttribute("user");
         int uid;//用户id
         if(user == null){
-            //用户尚未登录
-            uid = 0;
+            //用户尚未登录，直接返回，此时前台就没有收到 flag
+            return;
         }else{
             //用户已经登录
             uid = user.getUid();
