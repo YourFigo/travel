@@ -16,10 +16,10 @@
     <!-- 详情 start -->   
     <div class="wrap">
         <div class="bread_box">
-            <a href="/">首页</a>
+            <a href="index.html">首页</a>
             <span> &gt;</span>
-            <a href="#">国内游</a><span> &gt;</span>
-            <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+            <a href="#" id="link_category">国内游</a><span> &gt;</span>
+            <a href="#" id="link_rname">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
         </div>
         <div class="prosum_box">
             <dl class="prosum_left">
@@ -175,6 +175,7 @@
         }
     }
 
+    // 查看详情
     $(function () {
         //1.获取rid
         var rid = getParameter("rid");
@@ -190,6 +191,15 @@
             $("#address").html(route.seller.address);
             // 设置收藏次数
             $("#favoriteCount").html("已收藏" + route.count + "次");
+
+            // 修改详情页 图片上方的链接
+            // 分类名 需要根据 cid来取得
+            $.get("category/findByCid",{cid:route.cid},function (category) {
+                $("#link_category").html(category.cname);
+            });
+            $("#link_category").prop("href","route_list.html?cid=" + route.cid);
+            $("#link_rname").html(route.rname);
+            $("#link_rname").prop("href","route_detail.html?rid=" + route.rid);
 
             //图片展示
             var ddstr = '<a class="up_img up_img_disable"></a>';
@@ -215,7 +225,7 @@
 
             dtStr = '<img alt="" class="big_img" src="'+route.rimage+'">';
             $("#dt").html(dtStr);
-            //图片展示和切换代码调用
+            //图片展示和切换
             goImg();
         });
     });

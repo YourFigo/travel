@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet("/category/*")
 public class CategoryServlet extends BaseServlet {
 
-    private CategoryService service = new CategoryServiceImpl();
+    private CategoryService categoryService = new CategoryServiceImpl();
 
     /**
      * 查询所有
@@ -31,9 +31,34 @@ public class CategoryServlet extends BaseServlet {
      */
     public void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.调用service查询所有
-        List<Category> cs = service.findAll();
+        List<Category> cs = categoryService.findAll();
         //2.序列化json返回
         writeValue(cs, response);
+    }
+
+    /**
+     * 根据 cid 查询 分类信息
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public void findByCid(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        // 从请求中获取 cid
+        String cid = request.getParameter("cid");
+        // 查询 分类 列表
+        List<Category> cs = categoryService.findAll();
+        // 用于存放 查询出 某个分类
+        Category category = null;
+        if (cid != null){
+            for (int i = 0; i < cs.size(); i++) {
+                Category c = cs.get(i);
+                if (Integer.parseInt(cid) == c.getCid()){
+                    category = c;
+                    break;
+                }
+            }
+        }
+        writeValue(category, response);
     }
 
 }
