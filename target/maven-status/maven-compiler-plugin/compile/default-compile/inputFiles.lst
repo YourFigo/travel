@@ -3,8 +3,6 @@ D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\RouteService.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\domain\Route.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\impl\UserServiceImpl.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\SellerDao.java
-D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\ActiveUserServlet.java
-D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\FindUserServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\UserService.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\impl\RouteImgDaoImpl.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\FavoriteService.java
@@ -14,7 +12,6 @@ D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\impl\SellerDaoImpl.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\UserDao.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\impl\RouteServiceImpl.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\RouteDao.java
-D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\RegeistUserServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\impl\RouteDaoImpl.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\domain\Favorite.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\util\UuidUtil.java
@@ -25,7 +22,6 @@ D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\CheckCodeServle
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\RouteServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\impl\CategoryServiceImpl.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\service\impl\FavoriteServiceImpl.java
-D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\LoginServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\domain\ResultInfo.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\domain\RouteImg.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\util\MailUtils.java
@@ -34,7 +30,6 @@ D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\filter\CharchaterFilter
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\RouteImgDao.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\CategoryServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\util\JedisUtil.java
-D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\ExitServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\domain\Category.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\web\servlet\BaseServlet.java
 D:\1_Code\java\travel\src\main\java\cn\itcast\travel\dao\impl\FavoriteDaoImpl.java

@@ -32,7 +32,7 @@ public class RouteDaoImpl implements RouteDao {
             sb.append(" and cid = ? ");
             params.add(cid);
         }
-        if (rname != null && rname.length() > 0){
+        if (rname != null && rname.length() > 0 && !"null".equals(rname)){
             sb.append(" and rname like ? ");
             params.add("%" + rname + "%");
         }
@@ -61,7 +61,9 @@ public class RouteDaoImpl implements RouteDao {
             sb.append(" and cid = ? ");
             params.add(cid);
         }
-        if (rname != null && rname.length() > 0){
+        // 必须加条件 && !"null".equals(rname) ，因为前台如果没有给 rname 赋值，会传过一个 String 类型的null，
+        // 如果不加条件，也会通过if条件
+        if (rname != null && rname.length() > 0 && !"null".equals(rname)){
             sb.append(" and rname like ? ");
             params.add("%" + rname + "%");
         }
